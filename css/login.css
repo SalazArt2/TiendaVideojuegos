@@ -1,42 +1,56 @@
 :root{
-    --principal :rgb(0, 0, 0);    
-    --secundario:rgb(70, 0, 107);
-    --forma:rgb(0, 80, 199);
-    --blanco    :#fff;
-    --oscuro    :#000;
+    --blanco    : #ffffff;
+    --oscuro    : #212121;
+    --primaria  : #FFC107;
+    --secundaria: #0097a7;
+    --gris      : #757575;
+    --grisal    : #DFE9F3;
 }
-label{
-	color: red;
-	font-size: 24px;
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* Hack para Box Model **/
+    height: 100%;
 }
-body{		
-    background-color: var(--oscuro);
+*, *::before, *::after {
+    box-sizing: inherit;
 }
-.formulario {
-    background-color: var(--gris);
-    width: min( 70rem, 100% ); /** Utilizar el valor más pequeño **/
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 1rem;
+body{        
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-image:linear-gradient(to top,var(--grisal) 0%,var(--blanco) 100%);    
 }
-.formulario fieldset{
+.sombra{
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
+    width: fit-content;    
+}
+.boton {
+    background-color: var(--secundaria);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
     border: none;
 }
-.contenedor-campos{			
-	position: relative;
-	width: 50%;
-	height: auto;
-	padding-left: 20px;
-	padding-top: 20px;
-	padding-bottom: 15px;
-	padding-right: 20px;
-	border-radius: 20px;	
-	margin: auto;
-	background-color: var(--forma);    
+@media (min-width: 768px){
+    .boton{
+        width: auto;
+    }
 }
-input[type=text]:focus,input[type=password]:focus,input[type=number]:focus,input[type=email]:focus{
-	outline: none;
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
 }
+
 .w-sm-100 {
     width: 100%;
 }
@@ -52,29 +66,42 @@ input[type=text]:focus,input[type=password]:focus,input[type=number]:focus,input
     justify-content: flex-end;
 }
 
-.boton {
-    background-color: var(--secundario);
-    color: var(--blanco);
-    padding: 1rem 3rem;
-    margin-top: 3rem;
-    font-size: 2rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: .5rem;
-    width: 90%;
-    text-align: center;
-    border: none;
-}
-.boton:hover{
-    background-color: var(--principal);
-    cursor: pointer;
-}
 @media (min-width: 768px){
-    .boton{
-        width: auto;
+    .navegacion-principal{
+        flex-direction:row;
+        justify-content: space-between;
     }
 }
+
+.boton:hover{
+    cursor: pointer;
+    background-color: var(--primaria);
+    color: var(--oscuro);
+}
+
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% ); /** Utilizar el valor más pequeño **/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+h2{
+    text-align: center;
+}
+.formulario fieldset{
+    border: none;    
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primaria);
+}
+
 @media (min-width: 768px) {
     .contenedor-campos{
         display: grid;
@@ -104,8 +131,9 @@ input[type=text]:focus,input[type=password]:focus,input[type=number]:focus,input
     width: 100%;
     border: none;
     padding: 1.5rem;
-    border-radius: 0.5rem;   
+    border-radius: 0.5rem;
 }
-.input-text::placeholder{
-    color: black;
+section{    
+    margin: auto;
+    width: fit-content;
 }

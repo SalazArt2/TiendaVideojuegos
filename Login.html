@@ -1,42 +1,59 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-</head>
-<body>
-    <form method="post" action="login.php" name="signup-form" class="formulario">
-        <fieldset>
-            <div class="contenedor-campos">
-                <div class="campo">
-                    <label> Nombre </label>
-                    <input class="input-text" type = "text" placeholder = "Nombre" />
-                </div>
-                
-                <div class="campo">
-                    <label> Edad </label>
-                    <input class="input-text" type = "number" placeholder = "Edad" min="0"/>
-                </div>
-                
-                <div class="campo">
-                    <label> Correo </label>
-                    <input class="input-text" type = "email" placeholder = "correo@extension" />
-                </div>
-                <div class="campo">
-                    <label> Contraseña </label>
-                    <input class="input-text" type = "password" placeholder = "contrasena123" />                
-                </div>
-                <div class="campo">
-                    <label> Confirmar Contraseña </label>
-                    <input class="input-text" type = "password" placeholder = "contrasena123" />                
-                </div>            
-            </div>    
-            <div class="alinear-derecha flex">
-                <input class="boton w-sm-100" type = "submit" value = "Enviar" />
-            </div>    
-        </fieldset>
-    </form>
-</body>    
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Crear cuenta</title>
+        <link rel="preload" href="css/normalize.css" as="style">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+        <link rel = "preload" href = "css/login.css" as = "style">
+        <link rel = "stylesheet" href = "css/login.css">
+ 
 
+    </head>
+ 
+    <body> 
+        <main class="contenedor sombra">            
+ 
+            <div class="servicios">     
+            <section>
+                <form class="formulario">
+                    <fieldset>                        
+                        <div class="contenedor-campos">
+                            <div class="campo">
+                                <label> Nombre </label>
+                                <input class="input-text" type = "text" placeholder = "Nombre" />
+                            </div>
+                            
+                            <div class="campo">
+                                <label> Edad </label>
+                                <input class="input-text" type = "number" placeholder = "Edad" min="0" />
+                            </div>
+                            
+                            <div class="campo">
+                                <label> Correo </label>
+                                <input class="input-text" type = "email" placeholder = "E-mail" />
+                            </div>                            
+                            <div class="campo">
+                                <label> Contraseña </label>
+                                <input class="input-text" type = "password" placeholder = "Contraseña123" />
+                            </div>
+                            <div class="campo">
+                                <label> Confirmar Contraseña </label>
+                                <input class="input-text" type = "password" placeholder = "Contraseña123" />
+                            </div>
+                        </div>                            
+                        <div class="alinear-derecha flex">
+                                <input class="boton w-sm-100" type = "submit" value = "ENVIAR" />
+                        </div>                                                    
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+
+    </body>
+     
 </html>
