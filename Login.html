@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+    <form method="post" action="login.php" name="signup-form" class="formulario">
+        <fieldset>
+            <div class="contenedor-campos">
+                <div class="campo">
+                    <label> Nombre </label>
+                    <input class="input-text" type = "text" placeholder = "Nombre" />
+                </div>
+                
+                <div class="campo">
+                    <label> Edad </label>
+                    <input class="input-text" type = "number" placeholder = "Edad" min="0"/>
+                </div>
+                
+                <div class="campo">
+                    <label> Correo </label>
+                    <input class="input-text" type = "email" placeholder = "correo@extension" />
+                </div>
+                <div class="campo">
+                    <label> Contraseña </label>
+                    <input class="input-text" type = "password" placeholder = "contrasena123" />                
+                </div>
+                <div class="campo">
+                    <label> Confirmar Contraseña </label>
+                    <input class="input-text" type = "password" placeholder = "contrasena123" />                
+                </div>            
+            </div>    
+            <div class="alinear-derecha flex">
+                <input class="boton w-sm-100" type = "submit" value = "ENVIAR" />
+            </div>    
+        </fieldset>
+    </form>
+</body>    
+
+</html>
