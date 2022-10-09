@@ -8,6 +8,19 @@
     --fondo:  #030042;
     --color:  #3c3024;
 }
+/* Avatar */
+
+
+.signupFrm .avatar {
+    background-color: var(--blanco);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position:absolute;
+    top: 20%;
+    left: calc(50% - 50px);
+  }
+  
 /* Get rid of all default margins/paddings. Set typeface */
 body {
   box-sizing: border-box;
