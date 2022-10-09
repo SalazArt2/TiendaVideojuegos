@@ -36,7 +36,7 @@ nav a:hover{
     display: flex;
     flex-direction: column;
     width: 100%;
-    
+    position: relative;
     z-index: 10;
 }
 .menu > li{
@@ -53,7 +53,8 @@ nav li li{
     width: 400px;
 }
 nav > ul > li > ul{
-    left:  20%;
+    left:30%;
+    top:0;
 }
 nav li:hover > ul > li{
     max-width: 500px;
@@ -77,6 +78,7 @@ nav li:hover > ul > li{
     }
     nav > ul > li > ul{
         top: 100%;
+        left:0;
     }
     nav li:hover > ul > li{
         max-height: 500px;
