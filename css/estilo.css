@@ -1,13 +1,17 @@
 :root{
     --blanco    : #ffffff;
     --oscuro    : #212121;
+    --oscuroT   : #000000;
     --primaria  : #FFC107;
     --secundaria: #0097a7;
     --gris      : #757575;
     --grisal    : #DFE9F3;    
+    --fondo     : #030042;
+    --fondoAl   : #000004;
 }
 body{
     font-family: Arial;
+    background-image:linear-gradient(to top,var(--fondoAl) 0%,var(--oscuroT) 100%);
 }
 nav ul{
     list-style: none;
@@ -110,16 +114,10 @@ nav li:hover > ul > li{
     background-color: var(--primaria);
     color: var(--oscuro);
 }
-.sombra{
-    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
-    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
-    box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
-    background-color: var(--blanco);
-    padding: 2rem;    
-}
 .contenedor {
-    max-width: 120rem;
-    margin: 0 auto;
+    max-width: 100rem;
+    background-color: var(--fondo);
+    margin: 0 auto;    
 }
 
 .logobg {
@@ -172,18 +170,30 @@ nav li:hover > ul > li{
 }
 
 .cajas{
-    width: calc(20% - 40px);
+    width: 1fr;
     margin: 20px;
-    height: 600px;
+    height: auto;
     background: var(--secundaria);
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.1);
     float: left;
 }
-.con-cajas{ 
-    align-items: center;
-    justify-content:center;
+.imagen{
+    width: auto;
+    height: 400px;
 }
-
+@media (min-width: 768px){
+    .cont-cajas{        
+        background-color: var(--fondo);
+        display: grid;
+        grid-template-columns: repeat(4, 3fr);
+        column-gap: 1rem;
+    }
+    .imagen{
+        width: auto;
+        height: 400px;
+        border-radius: 1rem;        
+    }
+}
 /**fondo**/
 
 
