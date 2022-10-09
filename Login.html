@@ -1,59 +1,39 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-        <title>Crear cuenta</title>
-        <link rel="preload" href="css/normalize.css" as="style">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
-        <link rel = "preload" href = "css/login.css" as = "style">
-        <link rel = "stylesheet" href = "css/login.css">
- 
-
-    </head>
- 
-    <body> 
-        <main class="contenedor sombra">            
- 
-            <div class="servicios">     
-            <section>
-                <form class="formulario">
-                    <fieldset>                        
-                        <div class="contenedor-campos">
-                            <div class="campo">
-                                <label> Nombre </label>
-                                <input class="input-text" type = "text" placeholder = "Nombre" />
-                            </div>
-                            
-                            <div class="campo">
-                                <label> Edad </label>
-                                <input class="input-text" type = "number" placeholder = "Edad" min="0" />
-                            </div>
-                            
-                            <div class="campo">
-                                <label> Correo </label>
-                                <input class="input-text" type = "email" placeholder = "E-mail" />
-                            </div>                            
-                            <div class="campo">
-                                <label> Contraseña </label>
-                                <input class="input-text" type = "password" placeholder = "Contraseña123" />
-                            </div>
-                            <div class="campo">
-                                <label> Confirmar Contraseña </label>
-                                <input class="input-text" type = "password" placeholder = "Contraseña123" />
-                            </div>
-                        </div>                            
-                        <div class="alinear-derecha flex">
-                                <input class="boton w-sm-100" type = "submit" value = "ENVIAR" />
-                        </div>                                                    
-                    </fieldset>
-                </form>
-            </section>
-        </main>
-
-    </body>
-     
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="signupFrm">
+        <form action="" class="form">
+          <h1 class="title">Sign up</h1>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a">
+            <label for="" class="label">Email</label>
+          </div>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a">
+            <label for="" class="label">Username</label>
+          </div>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a">
+            <label for="" class="label">Password</label>
+          </div>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a">
+            <label for="" class="label">Confirm Password</label>
+          </div>
+    
+          <input type="submit" class="submitBtn" value="Sign up">
+        </form>
+      </div>
+</body>
 </html>
