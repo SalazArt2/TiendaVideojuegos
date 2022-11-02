@@ -1,4 +1,16 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+  require 'database.php';
+  if(isset($_SESSION['user'])){         
+    $records=$connect->prepare("SELECT usuario,correo,contrasena FROM usuarios WHERE usuario=:usuario");
+    $records->bindParam(":usuario",$_SESSION['user']);
+    $records->execute();
+    $results=$records->fetch(PDO::FETCH_ASSOC);
+    $user=null;
+    if(count($results)>0)
+      $user=$results;
+  }
+?><!DOCTYPE html>
 <html>
 <head>
   <title>GameParadise</title>
@@ -45,17 +57,17 @@
               <li><a href="">PC</a></li>
             </ul></li>
             <li><a href=""><?php 
-            if(!isset($username)){
+            if(empty($user)){
               echo "Sesión";
             ?></a>
             <ul>
               <li><a href="../html/SignUp.html">Registrarse</a></li>
-              <li><a href="../html/login.html">Iniciar Sesión</a></li>
+              <li><a href="../php/login.php">Iniciar Sesión</a></li>
             </ul><?php }           
-            else{echo $username;
+            else{echo $user['usuario'];
             ?></a>
             <ul>
-              <li><a href="../html/SignUp.html">Cerrar Sesión</a></li>
+              <li><a href="../php/logout.php">Cerrar Sesión</a></li>
             </ul><?php } ?>
           </li>
         </ul>

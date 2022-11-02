@@ -1,5 +1,7 @@
 <?php
+
 class sql{
+    
         private $metodo;
         
         private $correo;        
@@ -43,27 +45,45 @@ class sql{
             return $this->contrasena;
         }
         public function subir(){
-            $dbhost="localhost";
-            $dbname="gameparadise";
-            $dbuser="root";
-            $dbpass="";
-            $sql="";
+            require 'database.php';
+            $contra =password_hash($this->contrasena,PASSWORD_BCRYPT);
+            $sql="INSERT INTO usuarios values (:nombre,:usuario,:correo,:edad,:contrasena);";
+            $stmt=$connect->prepare($sql);
+            $stmt->bindParam(':nombre',$this->nombre);
+            $stmt->bindParam(':usuario',$this->user);
+            $stmt->bindParam(':correo',$this->correo);
+            $stmt->bindParam(':edad',$this->edad);
+            $stmt->bindParam(':contrasena',$contra);
             
-            $sql="INSERT INTO usuarios values ('$this->nombre','$this->user','$this->correo','$this->edad','$this->contrasena');";
-            
-            $connect=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname)or die ("Problemas con la conexión");        
-            $result = mysqli_query($connect, $sql);
-            if ($result == FALSE) {
+            if (!$stmt->execute()) {
                 echo "fallo";
             }
             else{
                 
-                echo "exito";
+                header('Location: ../php/login.php');
+
             }
         }
 
         public function validar(){
+            require 'database.php';
+            session_start();
+            $records=$connect->prepare("SELECT usuario,correo,contrasena from usuarios where correo=:correo or usuario=:usuario");
             
+            $records->bindParam(':usuario',$this->user);
+            $records->bindParam(':correo',$this->correo);
+
+            $records->execute();
+            $results = $records->fetch(PDO::FETCH_ASSOC);
+            if(is_countable($results)&&password_verify($this->contrasena,$results['contrasena'])){
+                $_SESSION['user']=$results['usuario'];
+                header('Location: ../php/index.php');
+            }else{
+                $_SESSION['adv']="Usuario y/o Contraseña incorrectos";
+                $_SESSION['log']=$this->correo;
+                header('Location: ../php/login.php');
+            }
+
         }
     }
 ?>
