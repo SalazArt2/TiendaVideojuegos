@@ -23,55 +23,9 @@
 
 </head>
   <body {background-color: coral;}>    
-    <!-- Logo -->        
-      <div class="logobg" >
-          <div class="contenido-hero">
-            <img src="../img/LogoV1.png">
-          </div>
-      </div>           
-    <!-- Nav bar -->    
-      <nav>
-        <ul class="menu" position >
-          <li><a href="">Inicio</a></li>
-          <li><a href="">Géneros</a>
-            <ul>
-              <li><a href="">FPS</a></li>
-              <li><a href="">RPG</a></li>
-              <li><a href="">Exploración</a></li>
-              <li><a href="">Hack n' Slash</a></li>
-              <li><a href="">Automatización</a></li>
-            </ul></li>
-          <li><a href="">Sagas</a>
-            <ul>
-              <li><a href="">The Withcer</a></li>
-              <li><a href="">Halo</a></li>
-              <li><a href="">Resident Evil</a></li>
-              <li><a href="">Legend of Zelda</a></li>
-              <li><a href="">Crash Bandicoot</a></li>
-            </ul></li>
-          <li><a href="">Plataformas</a>
-            <ul>
-              <li><a href="">PlayStation</a></li>
-              <li><a href="">XBox</a></li>
-              <li><a href="">Nintendo</a></li>
-              <li><a href="">PC</a></li>
-            </ul></li>
-            <li><a href=""><?php 
-            if(empty($user)){
-              echo "Sesión";
-            ?></a>
-            <ul>
-              <li><a href="../html/SignUp.html">Registrarse</a></li>
-              <li><a href="../php/login.php">Iniciar Sesión</a></li>
-            </ul><?php }           
-            else{echo $user['usuario'];
-            ?></a>
-            <ul>
-              <li><a href="../php/logout.php">Cerrar Sesión</a></li>
-            </ul><?php } ?>
-          </li>
-        </ul>
-      </nav>        
+    <!-- Parte superior -->        
+     
+    <?php require '../partes/navegacion.php' ?>  
     <!-- Slider -->
     <div class="contenedor">
       <div class="slideshow-container">        
@@ -164,53 +118,7 @@
   
  
 
-  <footer>
-    <div class="content">
-      <div class="left box">
-        <div class="upper">
-          <div class="topic">Sobre nosotros</div>
-          <p>GameParadise® es un lugar en el qeu puedes adquirir cualquier tipo de videojuego para cualquier
-            plataforma de generación actual.
-          </p>
-        </div>
-        <div class="lower">
-          <div class="topic">Contactanos</div>
-          <div class="phone">
-            <a href="#"><i class="fas fa-phone-volume"></i>+007 9089 6767</a>
-          </div>
-          <div class="email">
-            <a href="#"><i class="fas fa-envelope"></i>GameParadise@gmail.com</a>
-          </div>
-        </div>
-      </div>
-      <div class="middle box">
-        <div class="topic">Nuestros Servicios</div>
-        <div><a href="#">Venta a domicilio</a></div>
-        <div><a href="#">Venta en plataforma digital</a></div>
-        <div><a href="#">Venta de accesorios</a></div>
-        <div><a href="#">Consolas</a></div>
-        <div><a href="#">Figuras coleccionables</a></div>
-        <div><a href="#">Articulos exclusivos en tienda</a></div>
-      </div>
-      <div class="right box">
-        <div class="topic">Contactanos</div>
-        <form action="#">
-          <input type="text" placeholder="e-mail">
-          <input type="submit" name="" value="Enviar">
-          <div class="media-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <!--<a href="#"><i class="fab fa-linkedin-in"></i></a>-->
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="bottom">
-      <p>Copyright © 2022 <a href="#">GameParadise®</a> All rights reserved</p>
-    </div>
-  </footer>
+  <?php require '../partes/AcercaDe.php' ?>
 
 
 

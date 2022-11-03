@@ -5,44 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Registrar</title>
-  <link rel="stylesheet" href="../css/register.css">
+  <link rel="stylesheet" href="../css/register1.css">
 </head>
 <body>
     <div class="signupFrm">        
         <img src="../img/Game.png" class="avatar" alt="Avatar Image"> 
-        <form method="post"action="../php/loginregister.php" class="form">            
+        <form method="post"action="../php/loginregister.php" class="formulario" id="formulario">            
             <h1 class="title">Sign up</h1>
-    
-           <div class="formu">
-             <div class="inputContainer">
-                 <input type="text" name="nombre"class="input" placeholder="a"required>
+             <div class="formulario_grupo" id="grupo_nombre">
+                 <input type="text" name="nombre"class="input" placeholder="a" required>
                  <label for="" class="label">Nombre</label>
              </div>
-             <div class="inputContainer">
+             <div class="formulario_grupo" id="grupo_edad">
                 <input type="number" name="edad"class="input" placeholder="a"required>
                 <label for="" class="label">Edad</label>
             </div>
-             <div class="inputContainer">
+             <div class="formulario_grupo" id="grupo_email">
                 <input type="email" name="email" class="input" placeholder="a" required>
                 <label for="" class="label">Email</label>
             </div>
-            <div class="inputContainer">
+            <div class="formulario_grupo" id="grupo_usuario">
                  <input type="text" name="user" class="input" placeholder="a"required>
                  <label for="" class="label">Username</label>
             </div>
             
-            <div class="inputContainer">
-                 <input type="password" name="contrasena"class="input" placeholder="a"required>
+            <div class="formulario_grupo" id="grupo_password">
+                 <input type="password" name="contrasena"class="input" placeholder="a" id="pass1">
                  <label for="" class="label">Password</label>
             </div>
             
-            <div class="inputContainer">
-                 <input type="password" class="input" placeholder="a"required>
+            <div class="formulario_grupo"id="grupo_password2">
+                 <input type="password" class="input" placeholder="a" id="pass2">
                  <label for="" class="label">Confirm Password</label>
             </div>
-            
+            <div class="formulario_grupo">
+                <input type="submit" name="boton" class="submitBtn" value="Sign up">
            </div>
-            <input type="submit" name="boton" class="submitBtn" value="Sign up">
+            <script src="../javascript/signup.js"></script>            
+	        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
         </form>
       </div>
 </body>

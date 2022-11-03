@@ -1,6 +1,24 @@
-<?php 
-    session_start();
-?><!DOCTYPE html>
+<?php     
+    include 'usuarios.php';
+    $error="";
+    $log="";
+    if(!empty($_POST["log"])&&!empty($_POST["contrasena"]))
+    {
+        $ejecucion=new sql();    
+        $email=$_POST["log"];
+        $username=$_POST["log"];
+        $password=$_POST["contrasena"];
+        $ejecucion->setUser($username);
+        $ejecucion->setCorreo($email);
+        $ejecucion->setContrasena($password);
+        if(!$ejecucion->validar());
+        {
+            $error="Usuario y/o Contraseña Incorectos";
+            $log=$email;
+        }
+    }
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,13 +30,13 @@
 <body>
     <div class="signupFrm">        
         
-        <form method="post" class="form" action="../php/loginregister.php">            
+        <form method="post" class="form">            
             <h1 class="title">Log-in</h1>
     
            <div class="formu">  
             <img src="../img/Game.png" class="avatar" alt="Avatar Image"> 
              <div class="inputContainer">
-                 <input type="text"name="log" class="input" placeholder="a" value="<?php if(isset($_SESSION['log'])){ echo $_SESSION['log'] ; }?>">
+                 <input type="text"name="log" class="input" placeholder="a" value="<?=$log?>">
                  <label for="" class="label">Nombre Usuario o Correo</label>
              </div>
             
@@ -31,9 +49,9 @@
            </div>
             <input type="submit" class="submitBtn" name="boton" value="Ingresar">
             <?php
-                if(isset($_SESSION['adv'])){
+                if($error!=""){
                     ?>
-                    <a class="adv"><?php echo $_SESSION['adv']; ?></a>
+                    <a class="adv"><?php echo $error; ?></a>
                     <?php
                 }
             ?>

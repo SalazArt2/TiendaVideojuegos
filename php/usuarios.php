@@ -78,10 +78,9 @@ class sql{
             if(is_countable($results)&&password_verify($this->contrasena,$results['contrasena'])){
                 $_SESSION['user']=$results['usuario'];
                 header('Location: ../php/index.php');
+                return true;
             }else{
-                $_SESSION['adv']="Usuario y/o Contraseña incorrectos";
-                $_SESSION['log']=$this->correo;
-                header('Location: ../php/login.php');
+                return false;                
             }
 
         }

@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+:root{
+    
+    --select-border: #393939;
+    --select-focus: #101484;
+    --select-arrow: var(--select-border);
+    --blanco: #ffffff;
+    --normal: #00c6fc;
+    --enfásis:#0008a1;
+    --oscuro: #000000;
+    --focus:  #ff0000;
+    --fondo:  #030042;
+    --color:  #3c3024;
+}
+/* Avatar */
+
+
+.signupFrm .avatar {
+    background-color: var(--blanco);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position:absolute;
+    top: 50px;
+    left: calc(50% - 50px);
+  }
+  
+/* Get rid of all default margins/paddings. Set typeface */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100rem;
+  background-image:linear-gradient(to top,var(--oscuro) 0%,var(--fondo) 100%);
+  font-family: "lato", sans-serif;
+}
+/* Puts the form in the center both horizontally and vertically. Sets its height to 100% of the viewport's height */
+
+.signupFrm {
+    display:flex;
+    justify-content: center;
+    align-items: center;    
+    height: 100%;
+    margin: -10%;
+  }
+  .formulario {    
+    display: grid;    
+    background-color: var(--oscuro);
+    width: 400px; 
+    
+    border-radius: 8px;
+    padding: 10px 40px;
+    height: 70rem;   
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+  }
+  
+  .title {
+    font-size: 50px;
+    margin-bottom: 50px;
+    color: var(--blanco);
+  }
+  .formulario_grupo {
+    position: relative;
+    height: 45px;
+    width: 90%;
+    margin-bottom: 17px;
+  }
+  
+  .input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid var(--color);
+    color: var(--blanco);
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+  }
+  .inputd {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 5rem;
+    width: 100%;
+    border: 1px solid var(--color);
+    color: var(--blanco);
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+  }
+  .inputb {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 4.5rem;
+    width: 100%;
+    border: 1px solid var(--color);
+    color: var(--blanco);
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 8px 20px;
+    outline: none;
+    background: none;
+    z-index: 1;      
+  }
+  .inputc {
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    height: 2rem;
+    width: 100%;
+    border: 1px solid var(--color);
+    color: var(--blanco);
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 8px 20px;
+    outline: none;
+    background: none;
+    z-index: 1;      
+  }
+  textarea::-webkit-scrollbar ,.inputd::-webkit-scrollbar{
+    width: 5px;
+}
+
+textarea::-webkit-scrollbar-track,.inputd::-webkit-scrollbar-track  {    
+    background-color: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb,.inputd::-webkit-scrollbar-thumb {
+  background-color: var(--enfásis);  
+}
+textarea::-webkit-scrollbar-button,.inputd::-webkit-scrollbar-button{
+  display: none
+}
+
+textarea::-webkit-scrollbar-corner,.inputd::-webkit-scrollbar-corner{
+  background-color: var(--oscuro);
+  outline: 1px solid var(--oscuro);
+}
+
+  /* Hide the placeholder texts (a) */
+  
+  ::placeholder {
+    color: transparent;
+  }
+  /* Styling text labels */
+
+.label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 0 4px;
+    background-color: var(--oscuro);
+    color: var(--blanco);
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 0;
+  }
+  .submitBtn {
+    display: block;
+    margin-right: 10%;    
+    margin-left: 80%;
+    padding: 15px 30px;
+    border: none;
+    background-color: var(--normal);
+    color: var(--oscuro);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top:10px;
+    transition: .4s;
+  }
+  
+  .submitBtn:hover {    
+    background-color: var(--enfásis);
+    transform: translateY(-2px);
+    color: var(--blanco);
+  }
+  .input:focus + .label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--focus);
+  }
+  .input:focus {
+    border: 2px solid var(--focus);
+  }
+  .input:not(:placeholder-shown)+ .label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  /* input b*/
+  .inputb:focus + .label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--focus);
+  }
+  .inputb:focus {
+    border: 2px solid var(--focus);
+  }
+  .inputb:not(:placeholder-shown)+ .label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+  }
+    /* input c*/
+    .inputc:not(:placeholder-shown)+ .label {
+      top: 7px;
+      left: 90%;      
+      text-align: end;
+      z-index: 10;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    /* input d*/
+    .inputd:not(:placeholder-shown)+ .label {
+        top: 100px;
+        left: 70%;      
+        text-align: end;
+        z-index: 10;
+        font-size: 14px;
+        font-weight: 600;
+      }
+  .inputd:focus {        
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 3px solid var(--focus);
+    border-radius:7px;
+  }  
+  @media (min-width: 768px){
+    .formulario{      
+      display: grid;      
+      column-count: 1;
+      grid-template-rows: repeat(5,auto) 6rem auto;      
+      row-gap: 1rem;
+    }
+    
+  }
+  

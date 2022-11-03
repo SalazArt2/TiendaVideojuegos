@@ -1,0 +1,120 @@
+nav ul{
+    list-style: none;
+    padding: 0;
+}
+nav li{
+    line-height: 3rem;
+    position: relative;
+}
+nav li ul{
+    position: absolute;
+}
+nav a{
+    color: #ddd;
+    display: block;
+    padding: 0 2.5em;
+    text-decoration: none;
+    transition: .4s;
+}
+nav a:hover{
+    background-color: var(--primaria);
+}
+/* Primer nivel*/
+.menu{
+    background: var(--grisos);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+.menu > li{
+    float: left;
+
+}
+/*segundo nivel*/
+
+nav li li{
+    background: var(--oscuro);
+    max-width: 0;
+    overflow: hidden;
+    transition: all .5s;
+    width: 400px;
+}
+nav > ul > li > ul{
+    left:30%;
+    top:0;
+}
+nav li:hover > ul > li{
+    max-width: 500px;
+    overflow: visible;
+}
+
+/*fin*/
+@media (min-width:768px) {
+    .menu{
+        flex-direction: row;
+        justify-content: space-evenly;
+        position: relative;
+    }
+    nav li li{
+        background: var(--oscuro);
+        max-height: 0;
+        max-width: 500px;
+        overflow: hidden;
+        transition: all .5s;
+        width: 200px;
+    }
+    nav > ul > li > ul{
+        top: 100%;
+        left:0;
+    }
+    nav li:hover > ul > li{
+        max-height: 500px;
+        overflow: visible;
+    }
+}
+  header{
+    font-family: Helvetica;
+    width: 480px;
+    margin: 0 auto;
+  }
+
+.logobg{
+    background-image: url("../img/simon-coroller-nd6rgow.gif");
+    background-size: cover;
+    background-color: transparent;
+}
+.logobg img{
+    
+    background-repeat: no-repeat;
+    
+    height: 350px;    
+    position: relative;
+}
+
+.navegacion-principal a{
+    padding: 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.navegacion-principal a:hover{
+    background-color: var(--primaria);
+    color: var(--oscuro);
+}
+.contenedor {
+    max-width: 100rem;
+    background-color: var(--fondo);
+    margin: 0 auto;    
+}
+
+.logobg {
+    
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 350px;
+    position: relative;
+    margin-bottom: 0rem;
+}

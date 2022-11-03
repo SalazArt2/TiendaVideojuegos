@@ -12,7 +12,7 @@
 
 
 .signupFrm .avatar {
-    background-color: var(--focus);
+    background-color: var(--blanco);
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -37,7 +37,8 @@ body {
     align-items: center;
     height: 100vh;
   }
-  .form {
+  .formulario {
+    display: grid;    
     background-color: var(--oscuro);
     width: 400px;
     border-radius: 8px;
@@ -50,7 +51,7 @@ body {
     margin-bottom: 50px;
     color: var(--blanco);
   }
-  .inputContainer {
+  .formulario_grupo {
     position: relative;
     height: 45px;
     width: 90%;
@@ -93,7 +94,8 @@ body {
   }
   .submitBtn {
     display: block;
-    margin-left: auto;
+    margin-right: 10%;    
+    margin-left: 80%;
     padding: 15px 30px;
     border: none;
     background-color: var(--normal);
@@ -101,10 +103,11 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 30px;
+    margin-top:10px;
+    transition: .4s;
   }
   
-  .submitBtn:hover {
+  .submitBtn:hover {    
     background-color: var(--enfásis);
     transform: translateY(-2px);
     color: var(--blanco);
@@ -128,19 +131,22 @@ body {
     font-weight: 600;
   }
   @media (min-width: 768px){
-    .formu{      
+    .formulario{      
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: 1rem;
     }
-    .inputContainer:nth-child(1),
-    .inputContainer:nth-child(2),
-    .inputContainer:nth-child(3),
-    .inputContainer:nth-child(4){
+    .formulario_grupo:nth-child(1),
+    .formulario_grupo:nth-child(2),
+    .formulario_grupo:nth-child(3),
+    .formulario_grupo:nth-child(4),
+    .formulario_grupo:nth-child(5),
+    .formulario_grupo:nth-child(8){
         grid-column: 1 / 3;
     }
-    .inputContainer:nth-child(5),
-    .inputContainer:nth-child(6){
+    .formulario_grupo:nth-child(6),
+    .formulario_grupo:nth-child(7){
       width: 80%;
     }
   }
+  
