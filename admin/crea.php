@@ -85,7 +85,7 @@
                 </select>                         
             </div>
             <div class="formulario_grupo">
-                <input type="submit" name="boton" class="submitBtn" value="Sign up">
+                <input type="submit" name="boton" class="submitBtn" value="Crear">
            </div>
         </form>
       </div>
