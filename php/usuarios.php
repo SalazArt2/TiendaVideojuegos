@@ -44,6 +44,38 @@ class sql{
         public function getContrasena(){
             return $this->contrasena;
         }
+        public function existeCorr(){
+            require 'database.php';
+            $records=$connect->prepare("SELECT usuario from usuarios where correo=:correo");
+
+            $records->bindParam(':correo',$this->correo);
+
+            $records->execute();
+            $results = $records->fetch(PDO::FETCH_ASSOC);
+            if(is_countable($results))
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        public function existeUser(){
+            require 'database.php';
+            $records=$connect->prepare("SELECT nombre from usuarios where usuario=:usuario");
+
+            $records->bindParam(':usuario',$this->user);
+
+            $records->execute();
+            $results = $records->fetch(PDO::FETCH_ASSOC);
+            if(is_countable($results))
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
         public function subir(){
             require 'database.php';
             $contra =password_hash($this->contrasena,PASSWORD_BCRYPT);

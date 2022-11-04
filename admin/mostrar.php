@@ -13,7 +13,7 @@
         }
              
             $carpeta='../imagen/';
-            $nombreImagen=md5 ( uniqid ( rand (),true ) )."jpg";
+            $nombreImagen=md5 ( uniqid ( rand (),true ) ).".jpg";
             if(!is_dir($carpeta)){
                 mkdir($carpeta);
             }            

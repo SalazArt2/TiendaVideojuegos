@@ -1,3 +1,6 @@
+<?php 
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Registrar</title>
   <link rel="stylesheet" href="../css/register.css">
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
 </head>
@@ -24,11 +27,11 @@
                 <label for="" class="label">Edad</label>
             </div>
              <div class="formulario_grupo" id="grupo_email">
-                <input type="email" name="email" class="input" placeholder="a" >
+                <input type="email" name="email" class="input" placeholder="a" id="correo">
                 <label for="" class="label">Email</label>
             </div>
             <div class="formulario_grupo" id="grupo_usuario">
-                 <input type="text" name="user" class="input" placeholder="a">
+                 <input type="text" name="user" class="input" placeholder="a" id="user">
                  <label for="" class="label">Username</label>
             </div>
             
@@ -44,6 +47,12 @@
             <div class="formulario_grupo">
                 <input type="submit" name="boton" class="submitBtn" value="Sign up">
            </div>
+            <script>
+                var dime=20;
+            </script>
+            <?php
+                $var_PHP = "<script> document.writeln(Var_JavaScript); </script>"; // igualar el valor de la variable JavaScript a PHP 
+            ?>
             <script>
                                 
                 const formulario=document.getElementById('formulario');
@@ -64,8 +73,8 @@
                 function verificarPasswords() {
                 
                     // Ontenemos los valores de los campos de contraseñas 
-                    pass1 = document.getElementById('pass1');
-                    pass2 = document.getElementById('pass2');
+                    pass1 = document.getElementById('pass1').value;
+                    pass2 = document.getElementById('pass2').value;
                 
                     // Verificamos si las constraseñas no coinciden 
                     if (pass1.value != pass2.value) {
@@ -83,11 +92,11 @@
                     return (expresion.test(valor));
                 }
                 function validarEdad(){
-                    edad = document.getElementById('edad');
+                    edad = document.getElementById('edad').value;                    
                     return(edad>=18);
                 }
                 formulario.addEventListener('submit', (e) => {
-                    e.preventDefault();        
+                    e.preventDefault();  
                     let campos=[];
                     if(!validarCampo(expresiones.nombre,document.querySelectorAll('input')[0].value)){
                         campos.push('<b style="color:white;">El nombre no puede llevar numeros ni quedar vacío<br></b>');
@@ -108,7 +117,7 @@
                     if(!validarEdad()){
                         campos.push('<b style="color:white;">Debes ser mayor de edad para registrarte<br></b>');
                     }
-                    if(campos.length==0){
+                    if(campos.length==0){                     
                         document.getElementById('formulario').submit();
                     }else{   
                         campos.unshift('<b style="color:red;">REGISTRO FALLIDO</b><br>');
@@ -121,7 +130,6 @@
                         didOpen: () => {
                             Swal.showLoading()
                             timerInterval = setInterval(() => {
-                            b.textContent = Swal.getTimerLeft()
                             }, 100)
                         },
                         willClose: () => {

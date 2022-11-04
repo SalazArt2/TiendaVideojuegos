@@ -1,6 +1,5 @@
-import Swal from 'sweetalert2'
+
 const formulario=document.getElementById('formulario');
-const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -62,11 +61,6 @@ formulario.addEventListener('submit', (e) => {
 	}
     if(campos.length==0){
         document.getElementById('formulario').submit();
-    }else{        
-        Swal.fire(
-            'Good job!',
-            'You clicked the button!',
-            'success'
-          );
+    }else{   
     }
 });

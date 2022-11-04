@@ -39,7 +39,7 @@
               echo "Sesión";
             ?></a>
             <ul>
-              <li><a href="../html/SignUp.html">Registrarse</a></li>
+              <li><a href="../php/signup.php">Registrarse</a></li>
               <li><a href="../php/login.php">Iniciar Sesión</a></li>
             </ul><?php }           
             else{echo $user['usuario'];

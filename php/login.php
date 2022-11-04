@@ -34,7 +34,7 @@
             <h1 class="title">Log-in</h1>
     
            <div class="formu">  
-            <img src="../img/Game.png" class="avatar" alt="Avatar Image"> 
+            <img src="../img/LogoV1Escalado.png" class="avatar" alt="Avatar Image"> 
              <div class="inputContainer">
                  <input type="text"name="log" class="input" placeholder="a" value="<?=$log?>">
                  <label for="" class="label">Nombre Usuario o Correo</label>

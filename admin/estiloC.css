@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 :root{
-    
-    --select-border: #393939;
-    --select-focus: #101484;
-    --select-arrow: var(--select-border);
-    --blanco: #ffffff;
-    --normal: #00c6fc;
-    --enfásis:#0008a1;
-    --oscuro: #000000;
-    --focus:  #ff0000;
-    --fondo:  #030042;
-    --color:  #3c3024;
+  --blanco: #ffffff;
+  --normal: #ff3f3f;
+  --enfásis:#0008a1;
+  --oscuro: #000000;
+  --focus:  #8a0000;
+  --fondo:  #d00000;
+  --color:  #3c3024;
+  --darkbg: #212121;
 }
+
 /* Avatar */
 
 
@@ -248,11 +246,27 @@ textarea::-webkit-scrollbar-corner,.inputd::-webkit-scrollbar-corner{
     border: 3px solid var(--focus);
     border-radius:7px;
   }  
+  @media (min-width: 100px){
+    .formulario{      
+      display: grid;      
+      column-count: 1;
+      grid-template-rows: repeat(5,auto) 2rem auto;      
+      row-gap: 1rem;
+    }    
+  }
+  @media (min-width: 500px){
+    .formulario{      
+      display: grid;      
+      column-count: 1;
+      grid-template-rows: repeat(5,auto) 4.5rem auto;      
+      row-gap: 1rem;
+    }    
+  }
   @media (min-width: 768px){
     .formulario{      
       display: grid;      
       column-count: 1;
-      grid-template-rows: repeat(5,auto) 6rem auto;      
+      grid-template-rows: repeat(6,auto) 6rem repeat(4,4rem);      
       row-gap: 1rem;
     }
     

@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 :root{
     --blanco: #ffffff;
-    --normal: #00c6fc;
+    --normal: #ff3f3f;
     --enfásis:#0008a1;
     --oscuro: #000000;
-    --focus:  #ff0000;
+    --focus:  #8a0000;
     --error:  #ffee00ea;
-    --fondo:  #030042;
+    --fondo:  #d00000;
     --color:  #3c3024;
+    --darkbg: #212121;
 }
 /* Avatar */
 
@@ -27,7 +28,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-image:linear-gradient(to top,var(--oscuro) 0%,var(--fondo) 100%);
+  background-image:linear-gradient(to top,var(--oscuro) 0%,var(--fondo) 108%);
   font-family: "lato", sans-serif;
 }
 
@@ -105,10 +106,11 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
+    transition: .4s;
   }
   
   .submitBtn:hover {
-    background-color: var(--enfásis);
+    background-color: var(--focus);
     transform: translateY(-2px);
     color: var(--blanco);
   }
@@ -118,7 +120,7 @@ body {
     z-index: 10;
     font-size: 14px;
     font-weight: 600;
-    color: var(--focus);
+    color: var(--normal);
   }
   .input:focus {
     border: 2px solid var(--focus);
