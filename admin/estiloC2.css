@@ -37,9 +37,8 @@ body {
 .signupFrm {
     display:flex;
     justify-content: center;
-    align-items: center;    
-    height: 100%;
-    margin: -10%;
+    height: 90%;
+    margin-top: 20px;
   }
   .formulario {    
     display: grid;    
@@ -47,7 +46,8 @@ body {
     width: 400px; 
     
     border-radius: 8px;
-    padding: 10px 40px;
+    
+    padding: 20px 60px;
     height: 70rem;   
     box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
   }
@@ -60,7 +60,7 @@ body {
   .formulario_grupo {
     position: relative;
     height: 45px;
-    width: 90%;
+    width: 100%;
     margin-bottom: 17px;
   }
   
@@ -266,12 +266,11 @@ textarea::-webkit-scrollbar-corner,.inputd::-webkit-scrollbar-corner{
     .formulario{      
       display: grid;      
       column-count: 1;
-      grid-template-rows: repeat(5,auto) 6rem auto;      
+      grid-template-rows: repeat(6,auto) 6rem auto;      
       row-gap: 1rem;
     }
-    .formulario_grupo:nth-child(2){
-      background-color: var(--enfásis);
-    }
-    
   }
   
+  span{
+    color: var(--blanco);
+  }

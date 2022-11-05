@@ -1,6 +1,6 @@
 <head>
   <meta charset="UTF-8">  
-  <link rel="stylesheet" href="../partes/navegacion.css">
+  <link rel="stylesheet" href="../partes/navegacion1.css">
 </head>
 <div class="logobg" >
           <div class="contenido-hero">
@@ -21,7 +21,7 @@
             </ul></li>
           <li><a href="">Sagas</a>
             <ul>
-              <li><a href="">The Withcer</a></li>
+              <li><a href="">The Witcher</a></li>
               <li><a href="">Halo</a></li>
               <li><a href="">Resident Evil</a></li>
               <li><a href="">Legend of Zelda</a></li>
@@ -29,7 +29,7 @@
             </ul></li>
           <li><a href="">Plataformas</a>
             <ul>
-              <li><a href="">PlayStation</a></li>
+              <li><a href="">PlayStation</li>
               <li><a href="">XBox</a></li>
               <li><a href="">Nintendo</a></li>
               <li><a href="">PC</a></li>

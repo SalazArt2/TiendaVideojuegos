@@ -11,13 +11,14 @@
       $user=$results;
   }
 ?><!DOCTYPE html>
+
 <html>
 <head>
   <title>GameParadise</title>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/footerStyle1.css">
-<link rel="stylesheet" href="../css/estilo1.css">
+<link rel="stylesheet" href="../css/estilo2.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    
 
@@ -28,19 +29,21 @@
     <?php require '../partes/navegacion.php' ?>  
     <!-- Slider -->
     <div class="contenedor">
+            
       <div class="slideshow-container">        
+      <?php
+        $records=$connect->prepare("SELECT tituloTr,portada FROM juegos limit 3");        
+        $records->execute();
+        $data = $records->fetchAll();
+        foreach ($data as $valores):
+          ?>
         <div class="mySlides fade">      
-          <img src="../img/sm.jpg" style="width:100%">
-          <div class="text">Opcion 1</div>
-        </div>        
-        <div class="mySlides fade">      
-          <img src="../img/sm.jpg" style="width:100%">
-          <div class="text">Opcion 2</div>
-        </div>        
-        <div class="mySlides fade">      
-          <img src="../img/fifa23.jpg" style="width:100%">
-          <div class="text">Opcion 3</div>
-        </div>        
+          <img src="../img/<?php echo $valores['portada'];?>" style="width:100%">
+          <div class="text"><?php echo $valores['tituloTr']?></div>
+        </div>     
+        <?php
+        endforeach;
+        ?>
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>        
       </div>

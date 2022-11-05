@@ -164,7 +164,6 @@ const MultiSelectDropdown = (params) => {
               })
             );
             // For demo purposes, remove
-            tempSelectedList.appendChild(newElement('span', { text: 'n/a' }));
           }
         };
         div.refresh();

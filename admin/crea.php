@@ -10,21 +10,25 @@
         $saga=$_POST["saga"];
         $dis=$_POST["dispo"];
         $imagen=$_FILES['cara'];       
+        $imagenp=$_FILES['porta'];       
         $medida = 1000*1000;
-        if($imagen['size']>$medida){
+        if($imagen['size']<=$medida && $imagenp['size']<=$medida){
         }
              
-            $carpeta='../imagen/';
+            $carpeta='../img/';
             $nombreImagen=md5 ( uniqid ( rand (),true ) ).".jpg";
+            $nombreImagenc=md5 ( uniqid ( rand (),true ) ).".jpg";
             if(!is_dir($carpeta)){
                 mkdir($carpeta);
             }            
             move_uploaded_file($imagen['tmp_name'],$carpeta .$nombreImagen);                                    
+            move_uploaded_file($imagenp['tmp_name'],$carpeta .$nombreImagenc);                                    
         
-            $records=$connect->prepare("INSERT into juegos values('',:titO,:titT,:cara,:precio,:descr,:saga,:dispo)");
+            $records=$connect->prepare("INSERT into juegos values('',:titO,:titT,:cara,:porta,:precio,:descr,:saga,:dispo)");
             $records->bindParam(":titO",$To);
             $records->bindParam(":titT",$Tt);
             $records->bindParam(":cara",$nombreImagen);
+            $records->bindParam(":porta",$nombreImagenc);
             $records->bindParam(":precio",$precio);
             $records->bindParam(":descr",$desc);
             $records->bindParam(":saga",$saga);
@@ -60,15 +64,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Añadir Juego</title>
-  <link rel="stylesheet" href="../admin/estiloC.css">
-  <script src="js/jquery.min.js"></script>
+  <link rel="stylesheet" href="../admin/estiloC2.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
 </head>
 <body>
     <div class="signupFrm">
-        <form method="post" class="formulario"id="formulario"action=../admin/mostrar.php enctype="multipart/form-data">            
+        <form method="post" class="formulario"id="formulario" enctype="multipart/form-data">            
             <h1 class="title">Crear</h1>
              <div class="formulario_grupo">
                  <input type="text" name="To"class="input" placeholder="a" >
@@ -104,13 +107,13 @@
                  <input type="number" name="dispo"id="dispo" class="input" value="1" min="1">
                  <label for="" class="label">Disponibles</label>
             </div>
-            <script src="../javascript/multi-select2.js"></script>
-            <div class="wrapper">
+            <script src="../javascript/multi-select3.js"></script>
+            <div class="wrapper formulario_grupo">
                 <div class="container" id="dropdownSelected">
-                    <span>Selected</span>
+                    <span>Idioma(s)</span>                    
                 </div>
-                <div class="formulario_grupo container">
-                    <select class="inputd" name="Lang[]"multiple>                    
+                <div class="container">
+                    <select class="inputd" name="Lang[]" id="lan"multiple>                    
                         <?php                    
                         $query = $connect->prepare("SELECT * FROM idiomas");
                         $query->execute();
@@ -124,20 +127,26 @@
                 </div>
             </div>            
             <div class="formulario_grupo">
-                <select class="inputd" name="Gen[]" multiple>                    
+            <div class="container" id="dropdownSelected">
+                    <span>Género(s)</span>                    
+                </div>                 
+                <select class="inputd" name="Gen[]" id="gen" multiple>                    
                     <?php                    
                     $query = $connect->prepare("SELECT * FROM generos");
                     $query->execute();
                     $data = $query->fetchAll();
 
-                    foreach ($data as $valores):
+                    foreach ($data as $valores){
                     echo '<option value="'.$valores["idGen"].'">'.$valores["genero"].'</option>';
-                    endforeach;
+                    }
                     ?>
                 </select>                                                                    
             </div>
             <div class="formulario_grupo">
-                <select class="inputd"name="Plat[]" multiple>                    
+            <div class="container" id="dropdownSelected">
+                    <span>Plataforma(s)</span>                    
+                </div>
+                <select class="inputd"name="Plat[]" id="plat"multiple>                    
                     <?php                    
                     $query = $connect->prepare("SELECT * FROM plataformas");
                     $query->execute();
@@ -165,23 +174,50 @@
                         // Ontenemos los valores de los campos de contraseñas 
                         pass1 = document.getElementById('pass1');    
                     }
-
+                    function validarSelect(indice){
+                        return (indice === -1);
+                    }
                     function validarCampo(valor){
                         return valor!="";
                     }
                     function validarTexto(valor){
-                        return (valor.length>200);
+                        return (valor.length>=100)&&(valor.length<=600);
                     }
                     function validarPrecio(){
                         prize = document.getElementById('precio').value;
-                        return(prize>=175);
+                        return(prize>=0);
                     }
                     function validarCantidad(){
                         canti = document.getElementById('dispo').value;
-                        return(canti>=0);
+                        return(canti>=10);
+                    }
+                    function validarGeneros(){
+                        let options = document.getElementById('gen').options;
+                        let cant = 0;
+                        for (let i=0; i < options.length; i++) {
+                            if (options[i].selected) cant++;
+                        }
+                        return(cant>0);                        
+                    }
+                    function validarIdiomas(){
+                        let options = document.getElementById('lan').options;
+                        let cant = 0;
+                        for (let i=0; i < options.length; i++) {
+                            if (options[i].selected) cant++;
+                        }
+                        return(cant>0);                        
+                    }
+                    function validarPlataformas(){
+                        let options = document.getElementById('plat').options;
+                        let cant = 0;
+                        for (let i=0; i < options.length; i++) {
+                            if (options[i].selected) cant++;
+                        }
+                        return(cant>0);                        
                     }
                     formulario.addEventListener('submit', (e) => {
-                        e.preventDefault();        
+                        e.preventDefault();    
+                        
                         let campos=[];                        
                         if(!validarCampo(document.querySelectorAll('input')[0].value)){
                             campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
@@ -190,23 +226,33 @@
                             campos.push('<b style="color:white;">Ingrese Título de distribución</b><br>');
                         }
                         if(!validarCampo(document.querySelectorAll('input')[2].value)){
-                            campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
+                            campos.push('<b style="color:white;">Ingrese Imagen de Caratula</b><br>');
                         }
                         if(!validarCampo(document.querySelectorAll('input')[3].value)){
-                            campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
+                            campos.push('<b style="color:white;">Ingrese Imagen de Portada</b><br>');
                         }
                         if(!validarTexto(document.getElementById('desc').value)){
-                            campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
+                            campos.push('<b style="color:white;">La descripción debe ser mayor de 200</b><br>');
                         }                                                
                         if(!validarCantidad()){
-                            campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
+                            campos.push('<b style="color:white;">Se debe disponer de al menos 10</b><br>');
                         }
                         if(!validarPrecio()){
-                            campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
-                        }                        
+                            campos.push('<b style="color:white;">El valor mínimo del precio es 0</b><br>');
+                        }
+                        if(!validarIdiomas()){   
+                            campos.push('<b style="color:white;">Seleccione al menos un idioma</b><br>');
+                        }
+                        if(!validarGeneros()){   
+                            campos.push('<b style="color:white;">Seleccione al menos un género</b><br>');
+                        }
+                        if(!validarPlataformas()){   
+                            campos.push('<b style="color:white;">Seleccione al menos una plataforma</b><br>');
+                        }
+                          
                         if(campos.length==0){
                             document.getElementById('formulario').submit();
-                            swal.fier({
+                            swal.fire({
                                 position:'top',
                                 type:'succes',
                                 html:'<b style="color:green;">Inserción de datos lograda</b>',
@@ -217,14 +263,7 @@
                             Swal.fire({
                                 title: 'Error al crear',
                                 html: '<br><span class=\'border\'>'+campos.join("\n")+' </span>',
-                                timer: 2000,
-                                timerProgressBar: true,
-                                didOpen: () => {
-                                    Swal.showLoading()                                    
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
+                                type:'error'
                             })
                                 }
                     });
