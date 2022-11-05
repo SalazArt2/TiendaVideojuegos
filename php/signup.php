@@ -46,13 +46,7 @@
             </div>
             <div class="formulario_grupo">
                 <input type="submit" name="boton" class="submitBtn" value="Sign up">
-           </div>
-            <script>
-                var dime=20;
-            </script>
-            <?php
-                $var_PHP = "<script> document.writeln(Var_JavaScript); </script>"; // igualar el valor de la variable JavaScript a PHP 
-            ?>
+           </div>            
             <script>
                                 
                 const formulario=document.getElementById('formulario');
