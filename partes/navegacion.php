@@ -10,31 +10,43 @@
     <!-- Nav bar -->   
     <nav>
         <ul class="menu" position >
-          <li><a href="">Inicio</a></li>
+          <li><a href="../php/index.php">Inicio</a></li>
           <li><a href="">Géneros</a>
             <ul>
-              <li><a href="">FPS</a></li>
-              <li><a href="">RPG</a></li>
-              <li><a href="">Exploración</a></li>
-              <li><a href="">Hack n' Slash</a></li>
-              <li><a href="">Automatización</a></li>
+            <?php
+                $records=$connect->prepare("SELECT * FROM generos ORDER BY rand() limit 5");        
+                $records->execute();
+                $data = $records->fetchAll();
+                foreach ($data as $valores):
+                ?>
+                  <li><a href="../php/catalogo.php?gene=<?php echo $valores['idGen'];?>"><?php echo $valores['genero']; ?></a></li>
+              <?php
+                endforeach;
+              ?>
             </ul></li>
           <li><a href="">Sagas</a>
             <ul>
-              <li><a href="">The Witcher</a></li>
-              <li><a href="">Halo</a></li>
-              <li><a href="">Resident Evil</a></li>
-              <li><a href="">Legend of Zelda</a></li>
-              <li><a href="">Crash Bandicoot</a></li>
+              <li><a href="../php/catalogo.php?saga=The Witcher">The Witcher</a></li>
+              <li><a href="../php/catalogo.php?saga=Halo">Halo</a></li>
+              <li><a href="../php/catalogo.php?saga=Resident Evil">Resident Evil</a></li>
+              <li><a href="../php/catalogo.php?saga=Legend of Zelda">Legend of Zelda</a></li>
+              <li><a href="../php/catalogo.php?saga=Crash Bandicoot">Crash Bandicoot</a></li>
             </ul></li>
-          <li><a href="">Plataformas</a>
+          <li><a>Compania</a>
             <ul>
-              <li><a href="">PlayStation</li>
-              <li><a href="">XBox</a></li>
-              <li><a href="">Nintendo</a></li>
-              <li><a href="">PC</a></li>
-            </ul></li>
-            <li><a href=""><?php 
+              <?php
+                $records=$connect->prepare("SELECT * FROM compania ORDER BY rand() limit 5");        
+                $records->execute();
+                $data = $records->fetchAll();
+                foreach ($data as $valores):
+                ?>
+                  <li><a href="../php/catalogo.php?compania=<?php echo $valores['idCompania'];?>"><?php echo $valores['Compania']; ?></a></li>
+              <?php
+                endforeach;
+              ?>
+            </ul>
+          </li>
+          <li><a href=""><?php 
             if(empty($user)){
               echo "Sesión";
             ?></a>

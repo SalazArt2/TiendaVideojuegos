@@ -9,6 +9,8 @@
     --grisal    : #DFE9F3;    
     --fondo     : #0b090a;
     --fondoAl   : #1c1c1d;
+    --comprar   : #04be2c;
+    --comprarE  : #05187b;
 }
 body{
     font-family: Arial;
@@ -152,9 +154,9 @@ nav li:hover > ul > li{
     justify-content: center;
 }
 
-.contenido-hero h2,
-.contenido-hero p {
-    color: var(--blanco);
+.cajas h2,
+.cajas p {
+    color: var(--oscuroT);
     
 }
 
@@ -179,7 +181,7 @@ nav li:hover > ul > li{
 .cajas{
     width: 1fr;
     margin: 20px;
-    height: auto;
+    height: 49rem;    
     background: var(--secundaria);
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.1);
     float: left;
@@ -254,6 +256,7 @@ img {vertical-align: middle;}
   background-color: rgba(0,0,0,0.8);
 }
 
+
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
@@ -295,4 +298,18 @@ img {vertical-align: middle;}
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+}
+.comprar{    
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px 100px;
+    padding: 4.5px;
+    border-radius: 10px;
+    background-color: var(--comprar);
+    color: var(--blanco);
+    transition: .4s;
+}
+.comprar:hover{
+    background-color: var(--comprarE);
 }

@@ -2,7 +2,7 @@
     require '../php/database.php';  
     
     if(isset($_POST['To'])&&isset($_POST['Tt'])&&isset($_POST['precio'])&&isset($_POST['desc'])&&isset($_POST['saga'])
-    &&isset($_POST['dispo'])&&isset($_FILES['cara'])&&isset($_FILES['porta'])&&isset($_POST["year"])){
+    &&isset($_POST['dispo'])&&isset($_FILES['cara'])&&isset($_FILES['porta'])&&isset($_POST["year"])&&isset($_POST["company"])){
         $To=$_POST["To"];        
         $Tt=$_POST["Tt"];          
         $precio=$_POST["precio"];        
@@ -13,6 +13,7 @@
         $imagenp=$_FILES['porta'];       
         $año=$_POST["year"];
         $fecha=date('Y/m/d');
+        $compania=$_POST["company"];
         $medida = 1000*1000;
         if($imagen['size']<=$medida && $imagenp['size']<=$medida){
         }
@@ -37,8 +38,13 @@
             $records->bindParam(":dispo",$dis);
             $records->bindParam(":yea",$año);
             $records->bindParam(":fecha",$fecha);
+            
             $records->execute();     
             $id = $connect->lastInsertId();
+            $records=$connect->prepare("INSERT into juegoscompania values(:juego,:comp)");
+            $records->bindParam(":juego",$id);
+            $records->bindParam(":comp",$compania);
+            $records->execute();     
             $values = $_POST['Lang'];
             foreach ($values as $a){
                 $records=$connect->prepare("INSERT into juegosidiomas values(:juego,:lang)");
@@ -68,7 +74,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Añadir Juego</title>
-  <link rel="stylesheet" href="../admin/estiloC3.css">
+  <link rel="stylesheet" href="../admin/estiloC5.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
@@ -114,7 +120,7 @@
             <div class="formulario_grupo">
                  <input type="number" name="year"id="year" class="input" value="1" min="1">
                  <label for="" class="label">Año Lanzamiento</label>
-            </div>
+            </div>        
             <script src="../javascript/multi-select3.js"></script>
             <div class="wrapper formulario_grupo">
                 <div class="container" id="dropdownSelected">
@@ -165,6 +171,21 @@
                     endforeach;
                     ?>
                 </select>                         
+            </div>
+            <div class="formulario_grupo">
+            <label for="" class="label">Compania</label>
+                 <select class="inputd" name="company" id="company">
+                    <option class="option">--Selecciona una--</option>
+                    <?php                    
+                        $query = $connect->prepare("SELECT * FROM compania");
+                        $query->execute();
+                        $data = $query->fetchAll();
+
+                        foreach ($data as $valores):
+                        echo '<option class="option" value="'.$valores["idCompania"].'">'.$valores["Compania"].'</option>';
+                        endforeach;
+                        ?>                        
+                 </select>                 
             </div>
             <div class="formulario_grupo">
                 <input type="submit" name="boton" class="submitBtn" value="Crear">
@@ -229,9 +250,11 @@
                         }
                         return(cant>0);                        
                     }
+                    function validarCompania(){
+                        return (document.getElementById('company').selectedIndex>=1);
+                    }
                     formulario.addEventListener('submit', (e) => {
-                        e.preventDefault();    
-                        
+                        e.preventDefault();
                         let campos=[];                        
                         if(!validarCampo(document.querySelectorAll('input')[0].value)){
                             campos.push('<b style="color:white;">Ingrese Título Original</b><br>');
@@ -267,6 +290,9 @@
                             var today = new Date();
                             var year = today.getFullYear();
                             campos.push('<b style="color:white;">El año debe ser entre 1952 y '+year+'</b><br>');
+                        }    
+                        if(!validarCompania()){
+                            campos.push('<b style="color:white;">Seleccione una compañía</b><br>');
                         }              
                         if(campos.length==0){
                             document.getElementById('formulario').submit();

@@ -19,7 +19,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/footerStyle1.css">
-<link rel="stylesheet" href="../css/estilo2.css">
+<link rel="stylesheet" href="../css/estilo5.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    
 
@@ -89,7 +89,7 @@
   <br>
   <div class="cont-cajas contenedor">      
     <?php 
-      $records=$connect->prepare("SELECT tituloTr,caratula,precio,descripcion FROM juegos order By YearL desc limit 12 ");        
+      $records=$connect->prepare("SELECT id,tituloTr,caratula,precio,descripcion FROM juegos order By YearL desc limit 12 ");        
       $records->execute();
       $data = $records->fetchAll();
       foreach ($data as $valores):
@@ -97,7 +97,8 @@
       <section class="cajas contenedor-campos">           
         <img src="../img/<?php echo $valores['caratula'];?>" style="width:100%" class="imagen">
         <h2><?php echo $valores['tituloTr'];?> <br>$<?php echo $valores['precio'];?> MXN</h2>
-        <p><?php echo $valores['descripcion']; ?></p>
+        <p><?php echo $valores['descripcion']; ?></p><br>
+        <a class="comprar" href="../php/comprar?id=<?php echo $valores['id']?>">comprar</a>
       </section>
       <?php
         endforeach; 

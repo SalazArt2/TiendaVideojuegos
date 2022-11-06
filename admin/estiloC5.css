@@ -83,7 +83,7 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 5rem;
+    height: 5.5rem;
     width: 100%;
     border: 1px solid var(--color);
     color: var(--blanco);
@@ -93,6 +93,14 @@ body {
     outline: none;
     background: none;
     z-index: 1;
+  }
+  .inputd .option {
+    margin: 40px;
+    background:var(--oscuro);
+    color: var(--blanco);    
+  }
+  .inputd option:checked{
+    background-color: var(--enfásis);
   }
   .inputb {
     position: absolute;
