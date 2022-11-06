@@ -1,7 +1,8 @@
 <?php
-  session_start();
   require 'database.php';
-  if(isset($_SESSION['user'])){         
+  require '../php/funciones.php';
+  $auth=estaAutenticado();
+  if($auth){         
     $records=$connect->prepare("SELECT usuario,correo,contrasena FROM usuarios WHERE usuario=:usuario");
     $records->bindParam(":usuario",$_SESSION['user']);
     $records->execute();
@@ -87,35 +88,20 @@
 <!-- Catálogo -->
   <br>
   <div class="cont-cajas contenedor">      
+    <?php 
+      $records=$connect->prepare("SELECT tituloTr,caratula,precio,descripcion FROM juegos limit 12");        
+      $records->execute();
+      $data = $records->fetchAll();
+      foreach ($data as $valores):
+    ?>
       <section class="cajas contenedor-campos">           
-        <img src="../img/fifa23P.png" style="width:100%" class="imagen">
-        <h2>EA SPORTS™ FIFA 23 <br> Mex$ 1,599.00 </h2>
-        <p>FIFA 23 es un videojuego de simulación de fútbol publicado por Electronic Arts. Es la trigésima y última 
-          entrega de la serie FIFA desarrollada por EA Sports y lanzada en todo el mundo el 30 de septiembre de 2022 
-          para PC, Nintendo Switch, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S y Google Stadia.​ </p>
+        <img src="../img/<?php echo $valores['caratula'];?>" style="width:100%" class="imagen">
+        <h2><?php echo $valores['tituloTr'];?> <br>$<?php echo $valores['precio'];?> MXN</h2>
+        <p><?php echo $valores['descripcion']; ?></p>
       </section>
-      <section class="cajas contenedor-campos">           
-        <img src="../img/Portada_God_of_War_Ragnarok.webp" style="width:100%" class="imagen">
-        <h2>¡REALIZA TU PRECOMPRA AQUI!</h2>
-        <p>God of War: Ragnarök es un próximo juego de acción y aventuras en desarrollo por Santa Monica Studio 
-          y que será publicado por Sony Interactive Entertainment. Su lanzamiento está programado para el 9 de noviembre
-           del 2022 para PlayStation 4 y PlayStation 5.​ Será la 9.ª entrega de la saga de God of War.</p>
-      </section>        
-      <section class="cajas contenedor-campos">           
-        <img src="../img/spiel-spidermanps4-2.png" style="width:100%" class="imagen">
-        <h2>Marvel’s Spider-Man Remastered <br> Mex$ 999.00</h2>
-        <p>Marvel's Spider-Man es un videojuego de acción y aventura basado en el popular superhéroe hómonimo de la editorial Marvel Comics.​ Fue desarrollado por Insomniac Games y publicado por Sony Interactive Entertainment.</p>
-      </section>
-      <section class="cajas contenedor-campos">            
-        <img src="../img/pokemon-escudo_1zdf.png" style="width:100%" class="imagen">
-        <h2>Pokémon Escudo<br> Mex$ 1,599.00</h2>
-        <p>Pokémon Espada y Escudo, conocidos en Japón como Pocket Monsters Sword & Shield, son dos videojuegos de rol desarrollados por Game Freak y publicados por Nintendo y The Pokémon Company para Nintendo Switch. Son los primeros títulos de la octava generación de la serie principal de Pokémon. </p>
-      </section>
-      <section class="cajas contenedor-campos">            
-        <img src="../img/pokemon-espada-y-escudo-201972612334165_18.jpg" style="width:100%" class="imagen">
-        <h2>Pokémon Espada<br> Mex$ 1,599.00</h2>
-        <p>Pokémon Espada y Escudo, conocidos en Japón como Pocket Monsters Sword & Shield, son dos videojuegos de rol desarrollados por Game Freak y publicados por Nintendo y The Pokémon Company para Nintendo Switch. Son los primeros títulos de la octava generación de la serie principal de Pokémon. </p>
-      </section>      
+      <?php
+        endforeach; 
+      ?>   
   </div>
 
   

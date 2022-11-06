@@ -1,0 +1,21 @@
+{
+    "name":"gameparadise/tienda-online",
+    "description": "Tienda online de videojuegos",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shalom Isai Salazar Arguijo",
+            "email": "shalomsalazar2002@gmai.com"
+        },
+        {
+            "name": "Ivan Osmar Vasquez Flores",
+            "email": "ivanOsmar@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\":"./classes"
+        } 
+    }
+}
