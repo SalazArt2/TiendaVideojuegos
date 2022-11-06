@@ -98,7 +98,13 @@
         <img src="../img/<?php echo $valores['caratula'];?>" style="width:100%" class="imagen">
         <h2><?php echo $valores['tituloTr'];?> <br>$<?php echo $valores['precio'];?> MXN</h2>
         <p><?php echo $valores['descripcion']; ?></p><br>
-        <a class="comprar" href="../php/comprar?id=<?php echo $valores['id']?>">comprar</a>
+        <a class="comprar" href="<?php 
+        if($auth){
+        ?>
+          ../php/comprar?id=<?php echo $valores['id'];        
+        }else
+        ?>
+          ../php/login.php">comprar</a>
       </section>
       <?php
         endforeach; 
