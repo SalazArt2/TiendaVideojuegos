@@ -2,7 +2,7 @@
     require '../php/database.php';  
     
     if(isset($_POST['To'])&&isset($_POST['Tt'])&&isset($_POST['precio'])&&isset($_POST['desc'])&&isset($_POST['saga'])
-    &&isset($_POST['dispo'])&&isset($_FILES['cara'])&&isset($_FILES['porta'])){
+    &&isset($_POST['dispo'])&&isset($_FILES['cara'])&&isset($_FILES['porta'])&&isset($_POST["year"])){
         $To=$_POST["To"];        
         $Tt=$_POST["Tt"];          
         $precio=$_POST["precio"];        
@@ -11,6 +11,8 @@
         $dis=$_POST["dispo"];
         $imagen=$_FILES['cara'];       
         $imagenp=$_FILES['porta'];       
+        $año=$_POST["year"];
+        $fecha=date('Y/m/d');
         $medida = 1000*1000;
         if($imagen['size']<=$medida && $imagenp['size']<=$medida){
         }
@@ -24,7 +26,7 @@
             move_uploaded_file($imagen['tmp_name'],$carpeta .$nombreImagen);                                    
             move_uploaded_file($imagenp['tmp_name'],$carpeta .$nombreImagenc);                                    
         
-            $records=$connect->prepare("INSERT into juegos values('',:titO,:titT,:cara,:porta,:precio,:descr,:saga,:dispo)");
+            $records=$connect->prepare("INSERT into juegos values('',:titO,:titT,:cara,:porta,:precio,:descr,:saga,:dispo,:yea,:fecha)");
             $records->bindParam(":titO",$To);
             $records->bindParam(":titT",$Tt);
             $records->bindParam(":cara",$nombreImagen);
@@ -33,6 +35,8 @@
             $records->bindParam(":descr",$desc);
             $records->bindParam(":saga",$saga);
             $records->bindParam(":dispo",$dis);
+            $records->bindParam(":yea",$año);
+            $records->bindParam(":fecha",$fecha);
             $records->execute();     
             $id = $connect->lastInsertId();
             $values = $_POST['Lang'];
@@ -64,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Añadir Juego</title>
-  <link rel="stylesheet" href="../admin/estiloC2.css">
+  <link rel="stylesheet" href="../admin/estiloC3.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
@@ -106,6 +110,10 @@
             <div class="formulario_grupo">
                  <input type="number" name="dispo"id="dispo" class="input" value="1" min="1">
                  <label for="" class="label">Disponibles</label>
+            </div>
+            <div class="formulario_grupo">
+                 <input type="number" name="year"id="year" class="input" value="1" min="1">
+                 <label for="" class="label">Año Lanzamiento</label>
             </div>
             <script src="../javascript/multi-select3.js"></script>
             <div class="wrapper formulario_grupo">
@@ -191,6 +199,12 @@
                         canti = document.getElementById('dispo').value;
                         return(canti>=10);
                     }
+                    function validarAño(){
+                        var today = new Date();
+                        var year = today.getFullYear();
+                        año = document.getElementById('year').value;
+                        return(año>=1952)&&(año<=year);
+                    }
                     function validarGeneros(){
                         let options = document.getElementById('gen').options;
                         let cant = 0;
@@ -249,7 +263,11 @@
                         if(!validarPlataformas()){   
                             campos.push('<b style="color:white;">Seleccione al menos una plataforma</b><br>');
                         }
-                          
+                        if(!validarAño()){
+                            var today = new Date();
+                            var year = today.getFullYear();
+                            campos.push('<b style="color:white;">El año debe ser entre 1952 y '+year+'</b><br>');
+                        }              
                         if(campos.length==0){
                             document.getElementById('formulario').submit();
                             swal.fire({

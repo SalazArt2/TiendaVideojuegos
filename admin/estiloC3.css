@@ -37,7 +37,7 @@ body {
 .signupFrm {
     display:flex;
     justify-content: center;
-    height: 90%;
+    height: 100%;
     margin-top: 20px;
   }
   .formulario {    
@@ -48,7 +48,7 @@ body {
     border-radius: 8px;
     
     padding: 20px 60px;
-    height: 70rem;   
+    height: 90%;   
     box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
   }
   
