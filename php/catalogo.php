@@ -3,7 +3,7 @@
   require '../php/funciones.php';
   $auth=estaAutenticado();
   if($auth){         
-    $records=$connect->prepare("SELECT usuario,correo,contrasena FROM usuarios WHERE usuario=:usuario");
+    $records=$connect->prepare("SELECT usuario,correo FROM usuarios WHERE usuario=:usuario");
     $records->bindParam(":usuario",$_SESSION['user']);
     $records->execute();
     $results=$records->fetch(PDO::FETCH_ASSOC);
@@ -85,7 +85,7 @@
         <h2><?php echo $valores['tituloTr'];?> <br>$<?php echo $valores['precio'];?> MXN</h2>
         <p><?php echo $valores['descripcion']; ?></p>
         <br>
-        <a class="comprar" href="../php/comprar?id=<?php echo $valores['id']?>">comprar</a>
+        <a class="comprar" href="../php/product.php?id=<?php echo $valores['id']?>">comprar</a>
       </section>
       <?php
         endforeach; }
@@ -104,7 +104,7 @@
         <h2><?php echo $valores['tituloTr'];?> <br>$<?php echo $valores['precio'];?> MXN</h2>
         <p><?php echo $valores['descripcion']; ?></p>
         <br>
-        <a class="comprar" href="../php/comprar?id=<?php echo $valores['id']?>">comprar</a>
+        <a class="comprar" href="../php/product.php?id=<?php echo $valores['id']?>">comprar</a>
       </section>
       <?php
         endforeach; }

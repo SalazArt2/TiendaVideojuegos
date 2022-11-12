@@ -1,0 +1,77 @@
+:root{
+  --blanco: #ffffff;
+  --normal: #ff3f3f;
+  --enfásis:#0008a1;
+  --oscuro: #000000;
+  --focus:  #8a0000;
+  --fondo:  #d00000;
+  --color:  #3c3024;
+  --darkbg: #212121;
+}
+
+.small-img-group {
+display: flex;
+justify-content: space-between;
+}
+
+.small-img-col { flex-basis: 24%;
+cursor: pointer;
+} 
+
+.sproduct select {
+  display: block; 
+  padding: 5px 10px;
+}
+  .sproduct input [type="number"]{
+  width: 50px; height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 18px;
+  }
+
+  .sproduct input:focus {
+  outline: none;
+  }
+
+  .buy-btn {        
+    opacity: 1;
+    display: block;
+      margin-left: auto;
+      padding: 10px 25px;
+      border: none;
+      background-color: var(--normal);
+      color: var(--oscuro);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: -40px;
+      transition: .4s all;
+    }
+    
+    .buy-btn:hover {
+      background-color: var(--focus);
+      transform: translateY(-2px);
+      color: var(--blanco);
+    }
+    .buy-btn2 {
+      width: 6rem;
+      appearance: button;
+      opacity: 1;
+      display: block;
+        margin-left: 75%;
+        padding: 10px 5px;
+        border: none;
+        background-color: var(--normal);
+        color: var(--oscuro);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: -40px;
+        transition: .4s all;
+      }
+      
+      .buy-btn2:hover {
+        background-color: var(--focus);
+        transform: translateY(-2px);
+        color: var(--blanco);
+      }

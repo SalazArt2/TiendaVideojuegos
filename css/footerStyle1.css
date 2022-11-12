@@ -23,7 +23,7 @@ footer{
   position:static;
   height: 10px;
   left: 0;
-  background: blue;
+  background: var(--primaria);
 }
 footer .content{
   max-width: 1350px;

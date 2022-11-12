@@ -109,6 +109,7 @@ class sql{
             $results = $records->fetch(PDO::FETCH_ASSOC);
             if(is_countable($results)&&password_verify($this->contrasena,$results['contrasena'])){
                 $_SESSION['user']=$results['usuario'];
+                $_SESSION['correo']=$results['correo'];
                 $_SESSION['login']=true;
                 header('Location: ../php/index.php');
                 return true;

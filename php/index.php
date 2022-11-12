@@ -101,7 +101,7 @@
         <a class="comprar" href="<?php 
         if($auth){
         ?>
-          ../php/comprar?id=<?php echo $valores['id'];        
+          ../php/product.php?id=<?php echo $valores['id'];        
         }else
         ?>
           ../php/login.php">comprar</a>

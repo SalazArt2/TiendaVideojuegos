@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Crear cuenta</title>
+        <link rel="preload" href="css/normalize.css" as="style">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+        <link rel = "preload" href = "css/login.css" as = "style">
+        <link rel = "stylesheet" href = "css/login.css">
+
+
+    </head>
+ 
+ <!-- Logo -->        
+ <div class="logobg">
+    <div class="contenido-hero">
+      <img src="img/Game.png">
+    </div>
+</div>           
+
+<!-- Nav bar -->
+<div class="nav-bg">
+  <nav><ul class="nav">
+    <li><a href="#">Géneros</a>
+      <ul class="des"><li><a href="">Shooters</a></li>
+      <li><a href="">RPG</a></li>
+      <li><a href="">Survival Horror</a></li></ul>
+      </li>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Quiénes somos</a></li>          
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Contacto</a></li>
+</ul></nav>
+
+    <body> 
+
+
+          
+
+    <img class="circular--square" src="img/Game.png" />
+
+        <main class="contenedor sombra">            
+ 
+            <div class="servicios">     
+            <section>
+                <form class="formulario">
+                    
+                    <fieldset>                        
+                        <div class="contenedor-campos">
+                            
+                            <div class="campo">
+                                <label> Nombre </label>
+                                <input class="input-text" type = "text" placeholder = "Nombre" />
+                            </div>
+                            
+                            <div class="campo">
+                                <label> Edad </label>
+                                <input class="input-text" type = "number" placeholder = "Edad" min="0" />
+                            </div>
+                            
+                            <div class="campo">
+                                <label> Correo </label>
+                                <input class="input-text" type = "email" placeholder = "E-mail" />
+                            </div>                            
+                            <div class="campo">
+                                <label> Contraseña </label>
+                                <input class="input-text" type = "password" placeholder = "Contraseña123" />
+                            </div>
+                            <div class="campo">
+                                <label> Confirmar Contraseña </label>
+                                <input class="input-text" type = "password" placeholder = "Contraseña123" />
+                            </div>
+                        </div>                            
+                        <div class="alinear-derecha flex">
+                                <input class="boton w-sm-100" type = "submit" value = "ENVIAR" />
+                        </div>                                                    
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+
+    </body>
+     
+
+    <label for="avatar">Choose a profile picture:</label>
+
+<input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg">
+
+
+</html>

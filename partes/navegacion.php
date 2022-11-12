@@ -32,7 +32,7 @@
               <li><a href="../php/catalogo.php?saga=Legend of Zelda">Legend of Zelda</a></li>
               <li><a href="../php/catalogo.php?saga=Crash Bandicoot">Crash Bandicoot</a></li>
             </ul></li>
-          <li><a>Compania</a>
+          <li><a href="">Compania</a>
             <ul>
               <?php
                 $records=$connect->prepare("SELECT * FROM compania ORDER BY rand() limit 5");        
@@ -57,6 +57,7 @@
             else{echo $user['usuario'];
             ?></a>
             <ul>
+              <li><a href="../php/carrito.php">Carrito</a></li>
               <li><a href="../php/logout.php">Cerrar Sesión</a></li>
             </ul><?php } ?>
           </li>
