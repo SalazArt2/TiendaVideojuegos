@@ -10,5 +10,5 @@
         $records->bindParam(":game",$juego);      
         $records->execute();
     }
-    header('location: ../php/index.php');
+    header('location: ../php/carrito.php');
 ?>

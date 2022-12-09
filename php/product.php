@@ -62,8 +62,15 @@
           Cantidad:
           <br>
           <br>
-          <input type="number" name="canti" value="1">
+          <div>
           
+            <input type="button" class="btn btn-primary btn-sm" id="btnsumar" value="   +    ">
+            <input type="number" id="contador" min="1" max="<?php echo $data["disponibles"];?>" value="1">
+            <input type="button" class="btn btn-primary btn-sm" id="btnrestar" value="   -    ">
+
+            <script src="../javascript/contador2.js">
+            </script>
+          </div>
           <input type="submit" class="buy-btn" text="Agregar al carrito">
           <h4 class="mt-5 mb-5">Descripción:</h4>
           <span><?php echo $data['descripcion'];?>

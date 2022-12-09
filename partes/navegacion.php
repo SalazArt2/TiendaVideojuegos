@@ -61,5 +61,12 @@
               <li><a href="../php/logout.php">Cerrar Sesión</a></li>
             </ul><?php } ?>
           </li>
+          <li>
+              <script src="../javascript/datentime.js">
+            </script>
+
+            <div  id="date" style="color: white;"></div>   
+                
+          </li>
         </ul>
       </nav>      

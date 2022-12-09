@@ -73,10 +73,12 @@
                   </thead>
                   <tbody>
                     <?php
-                     //SELECT juegos.caratula,juegos.tituloTr,juegos.precio,carro.cant from juegos,carro WHERE juegos.id in 
-                     //(SELECT carro.juego from carro where carro.user="molahs")
-                     $records=$connect->prepare("SELECT carro.juego,juegos.caratula,juegos.tituloTr,juegos.precio,carro.cant from juegos,carro WHERE juegos.id in 
-                     (SELECT carro.juego from carro where carro.user=:user)");   
+                     
+                     //SELECT juegos.tituloTr,juegos.caratula,juegos.precio,carro.cant from carro 
+                     //LEFT JOIN juegos on juegos.id in (SELECT carro.juego from carro where carro.user="molahs") GROUP BY juegos.tituloTr;
+                     $records=$connect->prepare("SELECT juegos.tituloTr,juegos.caratula,juegos.precio,carro.cant,juegos.id from carro 
+                     LEFT JOIN juegos on juegos.id in (SELECT carro.juego from carro where carro.user=:user)
+                      GROUP BY juegos.tituloTr;");   
                      $records->bindParam(":user",$_SESSION['user']);      
                      $records->execute();
                      $data = $records->fetchAll();
@@ -92,7 +94,7 @@
                       <td>$<?php echo number_format($valores['precio'], 2, '.', ',');?></td>
                       <td><?php echo $valores['cant'];?></td>
                       <td>$<?php echo number_format($valores['precio']*$valores['cant'], 2, '.', ',');?></td>
-                      <td><a href="../php/quitarC.php?id=<?php echo $valores['juego'];?>" class="btn btn-primary btn-sm">X</a></td>
+                      <td><a href="../php/quitarC.php?id=<?php echo $valores['id'];?>" class="btn btn-primary btn-sm">X</a></td>
                     </tr>                    
                     <?php
                         endforeach;
@@ -107,10 +109,18 @@
             <div class="col-md-6">
               <div class="row mb-5">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <button class="btn btn-primary btn-sm btn-block">Actualizar carro</button>
+                  <button class="btn btn-primary btn-sm btn-block" onclick="recargar()">Actualizar carro</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-outline-primary btn-sm btn-block">Seguir comprando</button>
+                  <button class="btn btn-outline-primary btn-sm btn-block" onclick="seguir()">Seguir comprando</button>
+                  <script>
+                    function seguir(){
+                      window.location.href = "../php/index.php";
+                    }
+                    function recargar(){
+                      location.reload();
+                    }
+                  </script>
                 </div>
               </div>
               
@@ -152,7 +162,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <button class="btn btn-primary btn-lg py-3 btn-block" 
-                      onclick="window.location='checkout.php'">Proceder al pago</button>
+                      onclick="window.location='payment.php'">Proceder al pago</button>
                     </div>
                   </div>
                 </div>
