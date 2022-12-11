@@ -33,7 +33,7 @@
             
       <div class="slideshow-container">        
       <?php
-        $records=$connect->prepare("SELECT tituloTr,portada FROM juegos order By fechaIng asc limit 3");        
+        $records=$connect->prepare("SELECT tituloTr,portada FROM juegos where (juegos.disponibles>=1) order By fechaIng asc limit 3");        
         $records->execute();
         $data = $records->fetchAll();
         foreach ($data as $valores):
@@ -89,7 +89,7 @@
   <br>
   <div class="cont-cajas contenedor">      
     <?php 
-      $records=$connect->prepare("SELECT id,tituloTr,caratula,precio,descripcion FROM juegos order By YearL desc limit 12 ");        
+      $records=$connect->prepare("SELECT id,tituloTr,caratula,precio,descripcion FROM juegos where (juegos.disponibles>=1)  order By YearL desc limit 12 ");        
       $records->execute();
       $data = $records->fetchAll();
       foreach ($data as $valores):

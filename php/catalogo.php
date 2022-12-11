@@ -53,7 +53,7 @@
     <?php 
     if(isset($_GET['compania'])){
         $busc=$_GET['compania'];
-      $records=$connect->prepare("SELECT * from juegos,juegoscompania where (juegoscompania.idJuego=juegos.id) and (juegoscompania.idCompania=:compania);
+      $records=$connect->prepare("SELECT * from juegos,juegoscompania where (juegoscompania.idJuego=juegos.id) and (juegoscompania.idCompania=:compania) and(juegos.disponibles>=1);
       ");   
       $records->bindParam(":compania",$busc);      
       $records->execute();
@@ -93,7 +93,7 @@
       <?php 
         if(isset($_GET['gene'])){
             $busc=$_GET['gene'];
-            $records=$connect->prepare("SELECT * from juegos,juegosgeneros where (juegosgeneros.idJuego=juegos.id) and (juegosgeneros.idGenero=:gene)");
+            $records=$connect->prepare("SELECT * from juegos,juegosgeneros where (juegosgeneros.idJuego=juegos.id) and (juegosgeneros.idGenero=:gene)and(juegos.disponibles>=1)");
       $records->bindParam(":gene",$busc);      
       $records->execute();
       $data = $records->fetchAll();
