@@ -8,7 +8,7 @@ session_start();
 
 $pdf = new FPDF($orientation='P',$unit='mm', array(45,120));
 
-$pdf->setTitle("Ticket ".$_SESSION['user']);
+$pdf->setTitle("Ticket ".$_SESSION["user"]);
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',8);    //Letra Arial, negrita (Bold), tam. 20
 $textypos = 5;
@@ -24,15 +24,34 @@ $textypos+=6;
 $pdf->setX(2);
 $pdf->Cell(5,$textypos,'CANT.  ARTICULO           PRECIO            TOTAL');
 
-$total =0;
 $off = $textypos+6;
-$records=$connect->prepare("SELECT carro.juego,juegos.caratula,juegos.tituloTr,juegos.precio,carro.cant from juegos,carro WHERE juegos.id in 
-                     (SELECT carro.juego from carro where carro.user=:user)
-                     GROUP BY juegos.tituloTr");   
-                     $records->bindParam(":user",$_SESSION['user']);      
-                     $records->execute();
-                     $productos = $records->fetchAll();
+$producto = ($_GET['nombre']);  
+$producto = unserialize($producto);
 
+$price = ($_GET['precio']);  
+$price = unserialize($price);
+$val=count($price);
+$cant = ($_GET['cant']);  
+$cant = unserialize($cant);
+//var_dump($producto);
+$subtotal=0;
+for ($i=0; $i < $val; $i++) { 
+    
+    $pdf->setX(2);
+    $pdf->Cell(5,$off,$cant[$i]);
+    
+    $pdf->setX(6);
+    $pdf->Cell(35,$off,  strtoupper(substr($producto[$i], 0,13)) );
+    
+    $pdf->setX(20);
+    $pdf->Cell(11,$off,  "$".number_format($price[$i],2,".",",") ,0,0,"R");
+    $pdf->setX(32);
+    $pdf->Cell(11,$off,  "$ ".number_format($price[$i]*$cant[$i],2,".",",") ,0,0,"R");
+    $off+=6;
+    $subtotal += $price[$i]*$cant[$i];
+}
+
+/*
 foreach($productos as $pro){
 $pdf->setX(2);
 $pdf->Cell(5,$off,$pro["cant"]);
@@ -43,19 +62,42 @@ $pdf->Cell(11,$off,  "$".number_format($pro["precio"],2,".",",") ,0,0,"R");
 $pdf->setX(32);
 $pdf->Cell(11,$off,  "$ ".number_format($pro["cant"]*$pro["precio"],2,".",",") ,0,0,"R");
 
-$total += $pro["cant"]*$pro["precio"];
+$subtotal += $pro["cant"]*$pro["precio"];
 $off+=6;
-}
+}*/
 $textypos=$off+6;
 
 $pdf->setX(2);
-$pdf->Cell(5,$textypos,"TOTAL: " );
+$pdf->Cell(5,$textypos,"SUBTOTAL: " );
 $pdf->setX(38);
-$pdf->Cell(5,$textypos,"$ ".number_format($total,2,".",","),0,0,"R");
-
+$pdf->Cell(5,$textypos,"$ ".number_format($subtotal,2,".",","),0,0,"R");
 $pdf->setX(2);
-$pdf->Cell(5,$textypos+6,'GRACIAS POR TU COMPRA ');
+$pdf->Cell(5,$textypos+6,"TOTAL: " );
+$pdf->setX(38);
+$total=$subtotal*1.16;
+$pdf->Cell(5,$textypos+6,"$ ".number_format($total,2,".",","),0,0,"R");
+$pdf->setX(10);
+$pdf->Cell(5,$textypos+12,'GRACIAS POR TU COMPRA ');
 
 $pdf->output();
 
+$records=$connect->prepare("SELECT juego,cant from carro WHERE user=:user");
+                     $records->bindParam(":user",$_SESSION['user']);      
+                     $records->execute();
+                     $productos = $records->fetchAll();
+
+foreach($productos as $pro){
+    echo $pro["juego"];
+    echo $pro["cant"];
+    $data = [
+        'cant' => $pro["cant"],
+        'id' => $pro["juego"],
+    ];
+    $sql = "UPDATE juegos SET disponibles=(disponibles - :cant) WHERE id=:id";
+    $stmt= $connect->prepare($sql);
+    $stmt->execute($data);
+}
+$records=$connect->prepare("DELETE from carro WHERE user=:user");
+$records->bindParam(":user",$_SESSION['user']);      
+                     $records->execute();
 ?>

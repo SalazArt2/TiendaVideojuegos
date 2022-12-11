@@ -65,7 +65,7 @@
           <div>
           
             <input type="button" class="btn btn-primary btn-sm" id="btnsumar" value="   +    ">
-            <input type="number" id="contador" min="1" max="<?php echo $data["disponibles"];?>" value="1">
+            <input type="number" name="canti" id="contador" min="1" max="<?php echo $data["disponibles"];?>" value="1">
             <input type="button" class="btn btn-primary btn-sm" id="btnrestar" value="   -    ">
 
             <script src="../javascript/contador2.js">

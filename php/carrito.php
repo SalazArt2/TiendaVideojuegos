@@ -162,7 +162,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <button class="btn btn-primary btn-lg py-3 btn-block" 
-                      onclick="window.location='payment.php'">Proceder al pago</button>
+                      onclick="window.location='payment.php?total=<?php echo $total; ?>'">Proceder al pago</button>
                     </div>
                   </div>
                 </div>

@@ -65,7 +65,7 @@
         <h2><?php echo $valores['tituloTr'];?> <br>$<?php echo $valores['precio'];?> MXN</h2>
         <p><?php echo $valores['descripcion']; ?></p>
         <br>
-        <a class="comprar" href="../php/comprar?id=<?php echo $valores['id']?>">comprar</a>
+        <a class="comprar" href="../php/product.php?id=<?php echo $valores['id']?>">comprar</a>
       </section>
       <?php
         endforeach; }
